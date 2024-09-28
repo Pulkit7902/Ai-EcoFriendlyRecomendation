@@ -1,11 +1,11 @@
 const productCategory = [
-    {id:1 , label:"Art&Craft" , value:"art&craft"},
-    {id:2  , label:"EducationSupplies" ,value:"educationsupplies"},
-    {id:3 , label :"OfficeSupplies" , value:"officesupplies"},
-    {id:4 , label :"PaperProduct" , value:"paperproduct"},
-    {id:5, label :"Organizationsupplies" , value:"organizationsupplies"},
-    {id:6 , label :"Writingtool" , value:"writingtool"},
-    {id:7 ,label :"Books" , value:"books"}
+    {id:1 , label:"Fashion" , value:"fashion"},
+    {id:2  , label:"Electronics" ,value:"electronics"},
+    {id:3 , label :"PersonalCare" , value:"personalcare"},
+    {id:4 , label :"Transportation" , value:"transportation"},
+    {id:5, label :"Office Supplies" , value:"officesupplies"},
+    {id:6 , label :"Beauty" , value:"beauty"},
+    {id:7 ,label :"Furniture" , value:"furniture"}
 
 ]
 export default productCategory
