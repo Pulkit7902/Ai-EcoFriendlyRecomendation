@@ -53,7 +53,7 @@ const AdminEdit = ({ onClose, productData ,fetchData }) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:8080/api/edit', {
+        const response = await fetch(SummaryApi.editproduct.url, {
             method: SummaryApi.editproduct.method,
             credentials: 'include',
             headers: {

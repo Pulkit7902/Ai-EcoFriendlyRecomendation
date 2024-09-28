@@ -48,7 +48,7 @@ const Signup = () => {
     if(data.password === data.confirmpassword){
 
     
-    const dataResponse = await fetch('http://localhost:8080/api/adminsignup',{
+    const dataResponse = await fetch(SummaryApi.adminsignup.url,{
       method : SummaryApi.adminsignup.method,
       headers:{
         "content-type": "application/json"

@@ -15,7 +15,7 @@ function App() {
   const dispatch = useDispatch();
 
   const fetchUserDetails = async()=>{
-    const dataResponse = await  fetch('http://localhost:8080/api/adminuserdetail',{
+    const dataResponse = await  fetch(SummaryApi.admindetail.url,{
       method : SummaryApi.admindetail.method,
       credentials:'include'
     })

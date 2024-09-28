@@ -26,7 +26,7 @@ const Signin = () => {
       }
       const handleSubmit = async(e)=>{
         e.preventDefault();
-          const dataResponse = await fetch('http://localhost:8080/api/adminsignin',{
+          const dataResponse = await fetch(SummaryApi.adminsignin.url,{
           method : SummaryApi.adminsignin.method,
           credentials:'include',
           headers:{
