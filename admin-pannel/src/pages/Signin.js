@@ -103,7 +103,7 @@ const Signin = () => {
             </div>
             <button className='bg-purple-600 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-1'>Login </button>
         </form>
-        <p className='my-2 '>Don't have account ? <Link to={"/sign-up"} className='hover:text-purple-600' >Sign up</Link></p>
+        {/* <p className='my-2 '>Don't have account ? <Link to={"/sign-up"} className='hover:text-purple-600' >Sign up</Link></p> */}
 
         </div>
 
