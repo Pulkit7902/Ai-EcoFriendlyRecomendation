@@ -29,6 +29,7 @@ const FilterProductController = require('../controller/product/FilterProduct')
 const PaymentController = require('../controller/order/PaymentController')
 const webhook = require('../controller/order/webhook')
 const orderController = require('../controller/order/OrderController')
+const AllOrderContoller = require('../controller/order/OrderDetailcontroller')
 router.post("/signup" , userSignupController)
 router.post("/signin" , userSigninController)
 router.get("/user-details" ,authToken ,userDetailController)
@@ -58,5 +59,6 @@ router.post("/filter-product" , FilterProductController)
 router.post('/checkout',authToken , PaymentController)
 router.post('/webhook' , webhook) //api/webhook
 router.get("/orderlist" , authToken , orderController)
+router.get("/allorder" ,adminauthtoken ,AllOrderContoller)
 
 module.exports = router

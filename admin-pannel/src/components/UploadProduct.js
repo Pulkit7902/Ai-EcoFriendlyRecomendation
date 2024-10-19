@@ -50,7 +50,7 @@ const UploadProduct = ({ onClose , fetchData }) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const response  = await fetch('http://localhost:8080/api/productdata',{
+        const response  = await fetch(SummaryApi.productdata.url,{
             method:SummaryApi.productdata.method,
             credentials:'include',
             headers:{

@@ -47,6 +47,11 @@ const SummaryApi = {
         url:`${backendDomain}/api/deleteprod`,
         method:"post"
         
+    },
+    allorderdetail:{
+        url:`${backendDomain}/api/allorder`,
+        method:"get"
+        
     }
 
 }

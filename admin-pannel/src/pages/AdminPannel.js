@@ -45,6 +45,12 @@ const AdminPannel = () => {
           >
             Products
           </Link>
+          <Link
+            to='/orderdetail'
+            className='px-4 py-2 hover:bg-slate-100'
+          >
+            Orders
+          </Link>
         </nav>
       </aside>
       <main className='w-full md:w-3/4 lg:w-4/5 p-4'>
