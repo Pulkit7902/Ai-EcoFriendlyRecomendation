@@ -28,18 +28,18 @@ const AdminHeader = () => {
   };
 
   return (
-    <header className="bg-gray-800 text-white">
+    <header className="bg-white font-medium">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between p-4">
-        <div className="flex items-center mb-4 md:mb-0">
+        <div className="flex items-center justify-between mb-4 md:mb-0 gap-52">
           <Link to="/">
-            <Logo w={100} h={60} className="-mx-1" />
+            <Logo/>
           </Link>
-          <span className="ml-4 font-semibold text-xl tracking-tight">Admin Dashboard</span>
+          <span className=" font-semibold text-2xl tracking-tight text-center  text-black">Admin Dashboard</span>
         </div>
-        <nav className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
-          <Link to="/" className="hover:text-gray-400">Home</Link>
-          <Link to="/profile" className="hover:text-gray-400">Profile</Link>
-          <Link to="/settings" className="hover:text-gray-400">Settings</Link>
+        <nav className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-black">
+          <Link to="/" className="hover:text-black">Home</Link>
+          <Link to="/profile" className="hover:text-black">Profile</Link>
+          <Link to="/settings" className="hover:text-black">Settings</Link>
           <div>
             {user?._id ? (
               <button
