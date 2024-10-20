@@ -35,7 +35,8 @@ async function AdminSignin(req,res){
         
         const tokenOption = {
             httpOnly:true , 
-            secure:true
+            secure:true,
+            sameSite:'None'
         }
         res.cookie("token" , token , tokenOption).json({
             message:"Login Successfully",

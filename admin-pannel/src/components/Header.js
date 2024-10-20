@@ -12,8 +12,8 @@ const AdminHeader = () => {
   const user = useSelector(state => state?.user?.user);
 
   const handleLogout = async () => {
-    const fetchdata = await fetch('http://localhost:8080/api/adminlogout', {
-      method: SummaryApi.admindetail.method,
+    const fetchdata = await fetch(SummaryApi.adminlogout.url, {
+      method: SummaryApi.adminlogout.method,
       credentials: 'include',
     });
     const data = await fetchdata.json();
