@@ -59,6 +59,6 @@ router.post("/filter-product" , FilterProductController)
 router.post('/checkout',authToken , PaymentController)
 router.post('/webhook' , webhook) //api/webhook
 router.get("/orderlist" , authToken , orderController)
-router.get("/allorder" ,adminauthtoken ,AllOrderContoller)
+router.get("/allorder"  ,AllOrderContoller)
 
 module.exports = router

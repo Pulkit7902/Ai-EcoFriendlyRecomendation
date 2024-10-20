@@ -4,7 +4,7 @@ const AllOrderContoller  = async(req,res)=>{
     const userId = req.userId
     const user = await userModel.findById(userId)
 
-    const Allorder = await OrderModel.find().sort({createdAt:-1})
+    const Allorder = await OrderModel.find(user).sort({createdAt:-1})
 
     return res.status(200).json({
         data:Allorder,
