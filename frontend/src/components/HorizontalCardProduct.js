@@ -78,10 +78,14 @@ const HorizontalCardProduct = ({category, heading}) => {
                 return(
                     <Link to={"product/"+product?._id} className='w-full min-w-[380px] md:min-w-[380px] max-w-[380px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex'>
                         <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]'>
-                            <img src={product.productImage[0]} className='object-scale-down h-full hover:scale-110 transition-all'/>
+                            <img src={product.productImage[0]} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply'/>
                         </div>
                         <div className='p-4 grid'>
-                            <h2 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black'>{product?.productName}</h2>
+                        <h2 className='font-bold text-green-500 text-base   border-green-500 text-ellipsis '>{product?.brandName}</h2>
+                          
+                           <h2 className='font-medium text-base md:text-lg  text-black'>{product?.productName}</h2>
+                          
+                           
                             <p className='capitalize text-slate-500'>{product?.category}</p>
                             <div className='flex gap-3'>
                                 <p className='text-green-500 font-medium'>{ displayINRCurrency(product?.sellingPrice) }</p>
