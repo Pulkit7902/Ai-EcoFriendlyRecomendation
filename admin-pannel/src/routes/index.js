@@ -6,6 +6,7 @@ import Signup from '../pages/Signup'
 import Alluser from '../pages/Alluser'
 import Product from '../pages/Product'
 import OrderDetail from '../pages/OrderDetail'
+import IndividualCategory from '../pages/IndividualCategory'
 const router = createBrowserRouter([
     {
         path:"/",
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
             {
                 path:"/login",
                 element:<Signin/>
+
+            },
+            {
+                path:"/individualcategory",
+                element:<IndividualCategory/>
 
             },
 

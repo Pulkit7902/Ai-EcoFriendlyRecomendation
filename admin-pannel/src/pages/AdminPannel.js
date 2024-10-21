@@ -123,10 +123,12 @@ useEffect(()=>{
         <h2 className="text-xl font-bold">Total Sales</h2>
         <p className='text-center relative top-5 text-9xl '>{totalSales}</p>
       </div>
-      <div className="bg-red-500 text-white p-6 rounded-lg shadow-md">
+     <Link to={"/individualcategory"}>
+     <div className="bg-red-500 text-white p-6 rounded-lg shadow-md h-full">
         <h2 className="text-xl font-bold">Total Number of Products</h2>
         <p className='text-center relative top-5 text-9xl '>{allproduct.length}</p>
       </div>
+     </Link>
       <div className="bg-yellow-500 text-white p-6 rounded-lg shadow-md">
         <h2 className="text-xl font-bold">Total Number of Orders</h2>
         <p className='text-center relative top-5 text-9xl '>{allorder.length}</p>
