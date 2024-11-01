@@ -6,8 +6,9 @@ import uploadImage from '../helper/uploadImage';
 import Displayimage from './Displayimage';
 import { MdDelete } from "react-icons/md";
 import SummaryApi from '../common';
-import {toast} from 'react-toastify'
-const UploadProduct = ({ onClose , fetchData }) => {
+import { toast } from 'react-toastify';
+
+const UploadProduct = ({ onClose, fetchData }) => {
     const [data, setData] = useState({
         productName: "",
         brandName: "",
@@ -16,6 +17,9 @@ const UploadProduct = ({ onClose , fetchData }) => {
         description: "",
         price: "",
         sellingPrice: "",
+        carbonfootprint: "",
+        sustainabilityRating: "",
+        recyclable: ""
     });
     const [openFullscreenImage, setOpenFullscreenImage] = useState(false);
     const [uploadProductImage, setUploadImage] = useState("");
@@ -48,33 +52,29 @@ const UploadProduct = ({ onClose , fetchData }) => {
         }));
     };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const response  = await fetch(SummaryApi.productdata.url,{
-            method:SummaryApi.productdata.method,
-            credentials:'include',
-            headers:{
-                "content-type":"application/json"
+        const response = await fetch(SummaryApi.productdata.url, {
+            method: SummaryApi.productdata.method,
+            credentials: 'include',
+            headers: {
+                "content-type": "application/json"
             },
-            body:JSON.stringify(data)
-            
+            body: JSON.stringify(data)
+        });
 
-        })
-        const responsedata = await response.json()
-        if(responsedata.success){
-            toast.success(responsedata.message)
-            onClose()
-            fetchData()
-
-        
-        }
-        if(responsedata.error){
-            toast.error(responsedata.error)
+        const responsedata = await response.json();
+        if (responsedata.success) {
+            toast.success(responsedata.message);
+            onClose();
+            fetchData();
+        } else if (responsedata.error) {
+            toast.error(responsedata.error);
         }
     };
 
     return (
-        <div className='fixed w-full  h-full bg-slate-200 bg-opacity-35 top-0 left-0 right-0 bottom-0 flex justify-center items-center'>
+        <div className='fixed w-full h-full bg-slate-200 bg-opacity-35 top-0 left-0 right-0 bottom-0 flex justify-center items-center'>
             <div className='bg-white p-4 rounded w-full max-w-2xl h-full max-h-[80%] overflow-hidden'>
                 <div className='flex justify-between items-center pb-3'>
                     <h2 className='font-bold'>Upload Product</h2>
@@ -92,7 +92,6 @@ const UploadProduct = ({ onClose , fetchData }) => {
                         id='productName'
                         value={data.productName}
                         onChange={handleOnChange}
-                        name='productName'
                         className='p-2 bg-slate-100 border rounded'
                         required
                     />
@@ -102,7 +101,6 @@ const UploadProduct = ({ onClose , fetchData }) => {
                         placeholder='Enter the Brand Name'
                         id='brandName'
                         value={data.brandName}
-                        name='brandName'
                         onChange={handleOnChange}
                         className='p-2 bg-slate-100 border rounded'
                         required
@@ -111,7 +109,6 @@ const UploadProduct = ({ onClose , fetchData }) => {
                     <select
                         id='category'
                         value={data.category}
-                        name='category'
                         onChange={handleOnChange}
                         className='p-2 bg-slate-100 border rounded'
                     >
@@ -151,7 +148,7 @@ const UploadProduct = ({ onClose , fetchData }) => {
                                                 setFullImage(el);
                                             }}
                                         />
-                                        <span className='cursor-pointer' key={index}>
+                                        <span className='cursor-pointer'>
                                             <MdDelete onClick={() => handleDeleteProduct(index)} />
                                         </span>
                                     </div>
@@ -165,33 +162,71 @@ const UploadProduct = ({ onClose , fetchData }) => {
                     <input
                         type='number'
                         id='price'
-                        name='price'
                         value={data.price}
                         placeholder='Enter the price of the item'
                         onChange={handleOnChange}
                         className='p-2 bg-slate-200 border rounded mb-3'
+                        required
                     />
                     <label htmlFor='sellingPrice' className='mt-1'>Selling Price:</label>
                     <input
                         type='number'
                         id='sellingPrice'
                         placeholder='Enter the Selling price of the item'
-                        name='sellingPrice'
                         value={data.sellingPrice}
                         onChange={handleOnChange}
                         className='p-2 bg-slate-200 border rounded mb-3'
+                        required
                     />
+                    <label htmlFor='carbonfootprint' className='mt-3'>Carbon Footprint:</label>
+                    <input
+                        type='number'
+                        id='carbonfootprint'
+                        value={data.carbonfootprint}
+                        placeholder='Enter the Carbon Footprint of the item'
+                        onChange={handleOnChange}
+                        className='p-2 bg-slate-200 border rounded mb-3'
+                        required
+                    />
+                    <label htmlFor='sustainabilityRating' className='mt-3'>Sustainability Rating (A-F):</label>
+                    <select
+                        id='sustainabilityRating'
+                        value={data.sustainabilityRating}
+                        onChange={handleOnChange}
+                        className='p-2 bg-slate-200 border rounded mb-3'
+                        required
+                    >
+                        <option value="">Select Rating</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                    </select>
+                    <label htmlFor='recyclable' className='mt-3'>Recyclable:</label>
+                    <select
+                        id='recyclable'
+                        value={data.recyclable}
+                        onChange={handleOnChange}
+                        className='p-2 bg-slate-200 border rounded mb-3'
+                        required
+                    >
+                        <option value="">Select Option</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
                     <label htmlFor='description' className='mt-3'>Description:</label>
                     <textarea
                         id='description'
-                        name='description'
                         value={data.description}
                         onChange={handleOnChange}
                         className='h-28 bg-slate-100 border resize-none p-1'
                         rows={3}
                         placeholder='Enter the item description'
+                        required
                     />
-                    <button type='submit' className='px-3 py-2  bg-purple-400 rounded mb-10' >Upload Product</button>
+                    <button type='submit' className='px-3 py-2 bg-purple-400 rounded mb-10'>Upload Product</button>
                 </form>
             </div>
             {openFullscreenImage && (

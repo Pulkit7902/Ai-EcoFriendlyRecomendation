@@ -8,7 +8,7 @@ import { MdDelete } from "react-icons/md";
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
 
-const AdminEdit = ({ onClose, productData ,fetchData }) => {
+const AdminEdit = ({ onClose, productData, fetchData }) => {
     const [data, setData] = useState({
         ...productData,
         productName: productData?.productName || '',
@@ -18,6 +18,9 @@ const AdminEdit = ({ onClose, productData ,fetchData }) => {
         description: productData?.description || '',
         price: productData?.price || '',
         sellingPrice: productData?.sellingPrice || '',
+        carbonfootprint: productData?.carbonfootprint || '',
+        sustainabilityRating: productData?.sustainabilityRating || '',
+        recyclable: productData?.recyclable || ''
     });
 
     const [openFullscreenImage, setOpenFullscreenImage] = useState(false);
@@ -51,7 +54,7 @@ const AdminEdit = ({ onClose, productData ,fetchData }) => {
         }));
     };
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await fetch(SummaryApi.editproduct.url, {
             method: SummaryApi.editproduct.method,
@@ -65,7 +68,7 @@ const AdminEdit = ({ onClose, productData ,fetchData }) => {
         if (responsedata.success) {
             toast.success(responsedata.message);
             onClose();
-            fetchData()
+            fetchData();
         } else if (responsedata.error) {
             toast.error(responsedata.error);
         }
@@ -179,6 +182,46 @@ const AdminEdit = ({ onClose, productData ,fetchData }) => {
                         onChange={handleOnChange}
                         className='p-2 bg-slate-200 border rounded mb-3'
                     />
+                    <label htmlFor='carbonfootprint' className='mt-3'>CarbonFootprint:</label>
+                    <input
+                        type='number'
+                        id='carbonfootprint'
+                        name='carbonfootprint'
+                        value={data.carbonfootprint}
+                        placeholder='Enter the CarbonFootprint of the item'
+                        onChange={handleOnChange}
+                        className='p-2 bg-slate-200 border rounded mb-3'
+                    />
+                    <label htmlFor='sustainabilityRating' className='mt-3'>Sustainability Rating (A-F):</label>
+                    <select
+                        id='sustainabilityRating'
+                        value={data.sustainabilityRating}
+                        onChange={handleOnChange}
+                        className='p-2 bg-slate-200 border rounded mb-3'
+                        required
+                    >
+                        <option value="">Select Rating</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                    </select>
+                    <label htmlFor='recyclable' className='mt-3'>Recyclable:</label>
+                    <select
+                        id='recyclable'
+                        value={data.recyclable}
+                        onChange={handleOnChange}
+                        className='p-2 bg-slate-200 border rounded mb-3'
+                        required
+                    >
+                        <option value="">Select Option</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+        
+      
                     <label htmlFor='description' className='mt-3'>Description:</label>
                     <textarea
                         id='description'

@@ -29,6 +29,21 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true,
         min: 0  // Optional: ensures selling price is non-negative
+    },
+    carbonfootprint: {
+        type: Number,
+        required: true,
+        min: 0  // Optional: ensures price is non-negative
+    },
+    sustainabilityRating: {
+        type: String,
+        enum: ["A", "B", "C", "D", "E", "F"],  // Limiting to A-F values
+        required: true
+    },
+    recyclable: {
+        type: String,
+        required: true,
+        default: false  // Default to false if not specified
     }
 }, {
     timestamps: true
