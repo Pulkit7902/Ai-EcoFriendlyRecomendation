@@ -8,6 +8,7 @@ import VerticalCardProduct from '../components/VerticalCardProduct';
 import CategroyWiseProductDisplay from '../components/CategoryWiseProductDisplay';
 import addToCart from '../helpers/addToCart';
 import Context from '../context';
+import { FaArrowDown } from 'react-icons/fa6';
 
 const ProductDetails = () => {
   const [data,setData] = useState({
@@ -188,6 +189,21 @@ const ProductDetails = () => {
               <div className='flex flex-col gap-1'>
                 <p className='bg-red-200 text-green-500 px-2 rounded-full inline-block w-fit'>{data?.brandName}</p>
                 <h2 className='text-2xl lg:text-4xl font-medium'>{data?.productName}</h2>
+                <div className='flex  items-center  gap-2  '>
+                          
+                          <div className='flex gap-2 items-center  '>
+                          <h2 className='font-bold text-xs text-green-500  border-green-500 text-ellipsis '>CarbonFootprint:</h2>
+                          <div className='flex text-red-500 items-center mr-auto'>
+                          <h2 className='font-bold text-xs text-red-500   border-green-500 text-ellipsis '> {data?.carbonfootprint}kgCO2</h2>
+                          <FaArrowDown className='text-red-500'/>
+
+                          </div>
+                          </div>
+                          <h2 className='font-bold text-green-500 text-base   border-green-500 text-ellipsis '>SR:</h2>
+                          <h2 className='font-bold text-black text-base  border-green-500 text-ellipsis '>{data?.sustainabilityRating}</h2>
+
+                          </div>
+                     
                 <p className='capitalize text-slate-400'>{data?.category}</p>
 
                 <div className='text-green-500 flex items-center gap-1'>

@@ -4,6 +4,7 @@ import displayINRCurrency from '../helpers/displayCurrency'
 import Context from '../context'
 import addToCart from '../helpers/addToCart'
 import { Link } from 'react-router-dom'
+import { FaArrowDown } from 'react-icons/fa6'
 
 const VerticalCard = ({loading,data = []}) => {
     const loadingList = new Array(13).fill(null)
@@ -44,7 +45,40 @@ const VerticalCard = ({loading,data = []}) => {
                              <img src={product?.productImage[0]} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply'/>
                          </div>
                          <div className='p-4 grid gap-3'>
+                         {
+                                product?.recyclable === 'Yes' &&(
+                                    <div className='flex items-center justify-center gap-2'>
+                                          <h2 className='text-center  text-sm font-medium'>Recycable:</h2>
+                                          <p className='text-green-500'>Yes</p>
+                                      
+                                    </div>
+                                )
+                            }
+                            {
+                                product?.recyclable === 'No' &&(
+                                    <div className='flex items-center justify-center gap-2'>
+                                          <h2 className='text-center  text-sm font-medium'>Recycable:</h2>
+                                          <p className='text-red-500'>No</p>
+                                      
+                                    </div>
+                                )
+                            }
                          <h2 className='font-bold text-green-500 text-md text-center  border-green-500 text-ellipsis '>{product?.brandName}</h2>
+                         <div className='flex  items-center ml-auto gap-2  '>
+                          
+                            <div className='flex gap-2 items-center  '>
+                            <h2 className='font-bold text-xs text-green-500  border-green-500 text-ellipsis '>CarbonFootprint:</h2>
+                            <div className='flex text-red-500 items-center mr-auto'>
+                            <h2 className='font-bold text-xs text-red-500   border-green-500 text-ellipsis '> {product?.carbonfootprint}kgCO2</h2>
+                            <FaArrowDown className='text-red-500'/>
+
+                            </div>
+                            </div>
+                            <h2 className='font-bold text-green-500 text-base   border-green-500 text-ellipsis '>SR:</h2>
+                            <h2 className='font-bold text-black text-base  border-green-500 text-ellipsis '>{product?.sustainabilityRating}</h2>
+
+                            </div>
+                       
                              <h2 className='font-medium text-base md:text-lg text-ellipsis line-clamp-1 text-black'>{product?.productName}</h2>
                              <p className='capitalize text-slate-500'>{product?.category}</p>
                              <div className='flex gap-3'>

@@ -4,6 +4,7 @@ import AdminEdit from './AdminEdit';
 import DisplayCurrency from '../helper/DisplayCurrency';
 
 import SummaryApi from '../common';
+import { toast } from 'react-toastify';
 const AdminProductdetailDisplay = ({ data, onClose, fetchData }) => {
   const [editProduct, setEditProduct] = useState(false);
   const [productData, setProductData] = useState(data);
@@ -28,6 +29,7 @@ const AdminProductdetailDisplay = ({ data, onClose, fetchData }) => {
 
     if(responseData.success){
       console.log("deleted product")
+      toast.success()
         
     }
     

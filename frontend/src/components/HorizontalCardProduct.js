@@ -5,6 +5,8 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import addToCart from '../helpers/addToCart'
 import Context from '../context'
+import { FaArrowDown } from "react-icons/fa6";
+import { FaSubscript } from 'react-icons/fa'
 
 const HorizontalCardProduct = ({category, heading}) => {
     const [data,setData] = useState([])
@@ -76,12 +78,53 @@ const HorizontalCardProduct = ({category, heading}) => {
            ) : (
             data.map((product,index)=>{
                 return(
-                    <Link to={"product/"+product?._id} className='w-full min-w-[380px] md:min-w-[380px] max-w-[380px] md:max-w-[320px] h-36 bg-white rounded-sm shadow flex'>
+                    <Link to={"product/"+product?._id} className='w-full min-w-[380px] md:min-w-[380px] max-w-[380px] md:max-w-[380px] h-48 bg-white rounded-sm shadow flex'>
                         <div className='bg-slate-200 h-full p-4 min-w-[120px] md:min-w-[145px]'>
                             <img src={product.productImage[0]} className='object-scale-down h-full hover:scale-110 transition-all mix-blend-multiply'/>
                         </div>
+                        
                         <div className='p-4 grid'>
-                        <h2 className='font-bold text-green-500 text-base   border-green-500 text-ellipsis '>{product?.brandName}</h2>
+                           
+                            {
+                                product?.recyclable === 'Yes' &&(
+                                    <div className='flex items-center justify-center gap-2'>
+                                          <h2 className='text-center  text-sm font-medium'>Recycable:</h2>
+                                          <p className='text-green-500'>Yes</p>
+                                      
+                                    </div>
+                                )
+                            }
+                            {
+                                product?.recyclable === 'No' &&(
+                                    <div className='flex items-center justify-center gap-2'>
+                                          <h2 className='text-center  text-sm font-medium'>Recycable:</h2>
+                                          <p className='text-red-500'>No</p>
+                                      
+                                    </div>
+                                )
+                            }
+                            <div className='flex items-center justify-center '>
+                            <h2 className='font-bold text-green-500 text-base   border-green-500 text-ellipsis '>{product?.brandName}</h2>
+                            <div className='flex justify-center items-center ml-auto gap-2  '>
+                            <h2 className='font-bold text-green-500 text-base   border-green-500 text-ellipsis '>SR:</h2>
+                            <h2 className='font-bold text-black text-base  border-green-500 text-ellipsis '>{product?.sustainabilityRating}</h2>
+
+                            </div>
+                            </div>
+                            <div className='flex gap-2 items-center '>
+                            <h2 className='font-bold text-xs text-green-400  border-green-500 text-ellipsis '>CarbonFootprint:</h2>
+                            <div className='flex text-red-500 items-center '>
+                            <h2 className='font-bold text-xs text-red-500   border-green-500 text-ellipsis '> {product?.carbonfootprint}kgCO2</h2>
+                            <FaArrowDown className='text-red-500'/>
+
+                            </div>
+                            
+
+                            </div>
+                            
+                           
+                        
+
                           
                            <h2 className='font-medium text-base md:text-lg  text-black'>{product?.productName}</h2>
                           
